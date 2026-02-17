@@ -49,11 +49,26 @@ export const DocumentPreview: React.FC<DocumentPreviewProps> = ({ data }) => {
   };
 
   const getSignatoryLabel = () => {
-    if (data.clientType === ClientType.Proprietorship) return "Proprietor / Authorised Signatory";
-    if (data.clientType === ClientType.Individual) return "Owner / Applicant";
-    if (data.clientType === ClientType.LLP) return "Designated Partner";
-    if (data.clientType === ClientType.Partnership) return "Partner";
-    return "Authorised Signatory";
+    switch (data.clientType) {
+      case ClientType.Proprietorship:
+        return "Proprietor / Authorised Signatory";
+      case ClientType.Individual:
+        return "Owner / Applicant";
+      case ClientType.LLP:
+        return "Designated Partner / Authorised Signatory";
+      case ClientType.Partnership:
+        return "Partner / Authorised Signatory";
+      case ClientType.OPC:
+      case ClientType.PvtLtd:
+      case ClientType.PublicLtd:
+        return "Director / Authorised Signatory";
+      case ClientType.Trust:
+        return "Trustee / Authorised Signatory";
+      case ClientType.Society:
+        return "Secretary / President / Authorised Signatory";
+      default:
+        return "Authorised Signatory";
+    }
   };
 
   return (
