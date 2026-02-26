@@ -1,0 +1,5 @@
+{
+  "name": "Copyright Authorisation Portal",
+  "description": "A legal document generator for Copyright Act authorisation, featuring dynamic client details, entity type selection, and print-ready PDF output.",
+  "requestFramePermissions": []
+}
